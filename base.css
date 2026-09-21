@@ -1,0 +1,46 @@
+/* =========================================================
+   BASE — colors, fonts, resets
+   Edit colors here to retheme the whole site.
+   ========================================================= */
+:root {
+  --bg: #efe6f7;
+  --ink: #2a1c38;
+  --muted: #6a557c;
+  --card: #ffffff;
+  --line: #2a1c38;
+  --accent: #8b5fbf;
+  --accent-soft: #c4a3e0;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-sans: "Libre Franklin", "Segoe UI", sans-serif;
+  --max: 1080px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+section { scroll-margin-top: 5rem; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+ul { margin: 0; padding: 0; list-style: none; }
+p { margin: 0 0 1rem; }
+h2, h3 { margin: 0; }
+
+.section, .hero, .site-footer {
+  position: relative;
+  z-index: 2;
+}

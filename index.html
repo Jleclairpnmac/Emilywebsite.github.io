@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emily Ballardo — Marketing Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+
+  <!-- Split like a real template: base → layout → effects -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/effects.css" />
+</head>
+<body>
+
+  <!-- Animated background layers -->
+  <div class="bg-move" aria-hidden="true"></div>
+  <div class="starfield" id="starfield" aria-hidden="true"></div>
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="scroll-progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home">EB</a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+    <nav class="topnav" aria-label="Sections">
+      <a href="#services">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#bio">About</a>
+      <a href="#connect">Connect</a>
+    </nav>
+  </header>
+
+  <!-- =========================================================
+       HERO
+       ========================================================= -->
+  <section class="hero" id="home" data-parallax>
+    <p class="hero-kicker anim-in">Marketing Portfolio</p>
+
+    <div class="hero-name anim-in delay-1">
+      <!-- EDIT names -->
+      <span class="name-first">Emily</span>
+      <div class="hero-chrome-wrap">
+        <img class="chrome" src="assets/hero-chrome.png" alt="" />
+      </div>
+      <span class="name-last">Ballardo</span>
+    </div>
+
+    <a class="btn-outline anim-in delay-2" href="#services">Learn More</a>
+  </section>
+
+  <!-- =========================================================
+       SERVICES — sleek stacked cards + outward particle bursts
+       ========================================================= -->
+  <section class="section services" id="services">
+    <h2 class="split-title reveal">
+      <span class="serif">What I</span>
+      <span class="sans">CAN DO</span>
+    </h2>
+    <div class="cards">
+
+      <article class="service-card reveal">
+        <canvas class="card-burst" data-burst aria-hidden="true"></canvas>
+        <div class="card-stack" aria-hidden="true"></div>
+        <div class="card-face">
+          <div class="icon-pad">
+            <img class="chrome" src="assets/chrome-heart.png" alt="" />
+          </div>
+          <h3>Social Media &amp;<br />Content Creation</h3>
+          <a class="btn-mini" href="#social">View Work</a>
+        </div>
+      </article>
+
+      <article class="service-card reveal delay-1">
+        <canvas class="card-burst" data-burst aria-hidden="true"></canvas>
+        <div class="card-stack" aria-hidden="true"></div>
+        <div class="card-face">
+          <div class="icon-pad">
+            <img class="chrome" src="assets/chrome-blob.png" alt="" />
+          </div>
+          <h3>Copywriting, SEO &amp;<br />Email Marketing</h3>
+          <a class="btn-mini" href="#seo">View Work</a>
+        </div>
+      </article>
+
+      <article class="service-card reveal delay-2">
+        <canvas class="card-burst" data-burst aria-hidden="true"></canvas>
+        <div class="card-stack" aria-hidden="true"></div>
+        <div class="card-face">
+          <div class="icon-pad">
+            <img class="chrome" src="assets/chrome-burst.png" alt="" />
+          </div>
+          <h3>Influencer &amp;<br />Events</h3>
+          <a class="btn-mini" href="#influencer">View Work</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SOCIAL
+       ========================================================= -->
+  <section class="section social" id="social">
+    <h2 class="split-title reveal">
+      <span class="serif">Social Media</span>
+      <span class="sans">MARKETING</span>
+    </h2>
+
+    <div class="phones">
+      <img class="chrome float-chrome fc1" src="assets/chrome-star.png" alt="" data-float />
+      <img class="chrome float-chrome fc2" src="assets/chrome-star.png" alt="" data-float />
+      <img class="chrome float-chrome fc3" src="assets/hero-chrome.png" alt="" data-float />
+
+      <div class="phone reveal"><img src="assets/phone-warriors.png" alt="Warriors story" loading="lazy" /></div>
+      <div class="phone reveal delay-1"><img src="assets/phone-collage.png" alt="Lifestyle collage" loading="lazy" /></div>
+      <div class="phone reveal delay-2"><img src="assets/phone-panthers.png" alt="Panthers story" loading="lazy" /></div>
+      <div class="phone reveal delay-3"><img src="assets/phone-gni.png" alt="Brand post" loading="lazy" /></div>
+    </div>
+
+    <p class="case-note reveal">
+      Wrote a press release introducing a Sky Society Podcast episode featuring Jasmine Torres from Sephora.
+    </p>
+  </section>
+
+  <!-- =========================================================
+       SEO — simple grid (no absolute chaos)
+       ========================================================= -->
+  <section class="section seo" id="seo">
+    <h2 class="split-title reveal">
+      <span class="serif">SEO &amp;</span>
+      <span class="sans">COPYWRITING</span>
+    </h2>
+
+    <div class="seo-grid">
+      <article class="seo-block reveal">
+        <div class="device-frame">
+          <img src="assets/press-release.png" alt="SEO blog / press release" />
+        </div>
+        <p>Wrote an SEO-optimized blog using Semrush keyword research to improve search visibility.</p>
+        <img class="chrome float-inline" src="assets/chrome-blob.png" alt="" data-float />
+      </article>
+
+      <article class="seo-block reveal delay-1">
+        <div class="device-frame tall">
+          <img src="assets/phone-gni.png" alt="Content sample" />
+        </div>
+        <p>Crafted homepage storytelling and CTAs that match brand voice and drive conversions.</p>
+        <img class="chrome float-inline" src="assets/chrome-wave.png" alt="" data-float />
+      </article>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       EMAIL / INFLUENCER / EVENTS
+       ========================================================= -->
+  <section class="section case-band" id="email">
+    <div class="band">
+      <h2 class="split-title reveal">
+        <span class="serif">Email</span>
+        <span class="sans">MARKETING</span>
+      </h2>
+      <div class="band-row reveal">
+        <p>Contributed to a weekly newsletter reaching 27,000+ marketers — jobs, news, and community stories.</p>
+        <div class="band-media"><img src="assets/press-release.png" alt="Email sample" /></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section case-band" id="influencer">
+    <div class="band">
+      <h2 class="split-title reveal">
+        <span class="serif">Influencer</span>
+        <span class="sans">MARKETING</span>
+      </h2>
+      <div class="band-row flip reveal">
+        <div class="band-media">
+          <img src="assets/phone-collage.png" alt="Influencer content" />
+          <img class="chrome float-chrome on-media" src="assets/chrome-star.png" alt="" data-float />
+        </div>
+        <p>Gifted influencer outreach via HubSpot. Campaign exceeded onboarding target by 200%.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section case-band" id="events">
+    <div class="band">
+      <h2 class="split-title reveal">
+        <span class="serif">Events &amp;</span>
+        <span class="sans">PAID ADS</span>
+      </h2>
+      <div class="band-row reveal">
+        <div>
+          <p><strong>Paid Ads:</strong> Instagram ads with $0.16 CPC — 77% below standard.</p>
+          <p><strong>Event:</strong> Sold out in two days — 620 tickets, 100% capacity.</p>
+        </div>
+        <div class="band-media">
+          <img src="assets/phone-warriors.png" alt="Campaign creative" />
+          <img class="chrome float-chrome on-media" src="assets/chrome-burst.png" alt="" data-float />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SKILLS
+       ========================================================= -->
+  <section class="section creds" id="skills">
+    <div class="creds-inner">
+      <div class="reveal">
+        <p class="creds-label">Education</p>
+        <p class="creds-degree">BS, Business Administration (Marketing &amp; Finance)</p>
+      </div>
+      <div class="reveal delay-1">
+        <h2 class="split-title">
+          <span class="serif">Skills &amp;</span>
+          <span class="sans">CERTIFICATIONS</span>
+        </h2>
+        <ul class="cert-list">
+          <li>Become an AI-Powered Marketer Certification by Semrush</li>
+          <li>SEO Toolkit Certification by Semrush</li>
+          <li>Advanced Digital Marketing Certification by Sky Society</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       BIO
+       ========================================================= -->
+  <section class="section bio" id="bio">
+    <div class="bio-grid">
+      <div class="bio-copy reveal">
+        <h2 class="split-title align-left">
+          <span class="serif">Bio</span>
+          <span class="sans">GRAPHY</span>
+        </h2>
+        <p>Hello, my name is Emily! I'm a marketer who enjoys combining creativity and strategy to tell stories that foster connection, trust, and meaningful growth.</p>
+        <p>I believe strong marketing begins with authenticity and a genuine understanding of people.</p>
+        <p>My approach is rooted in curiosity, collaboration, and relationship building.</p>
+      </div>
+
+      <div class="bio-visual reveal delay-1">
+        <canvas class="portrait-burst" data-burst aria-hidden="true"></canvas>
+        <div class="arch-frame">
+          <img class="portrait" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80" alt="Emily Ballardo" />
+        </div>
+        <span class="float-tag t1">Marketing Strategy</span>
+        <span class="float-tag t2">Creative Marketer</span>
+        <span class="float-tag t3">Storyteller</span>
+        <img class="chrome mini" src="assets/chrome-star.png" alt="" data-float />
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       CONNECT — fades in from Bio, no hard line
+       ========================================================= -->
+  <section class="section connect" id="connect">
+    <div class="connect-grid">
+      <div class="connect-copy reveal">
+        <h2 class="split-title align-left">
+          <span class="serif">Let's</span>
+          <span class="sans">CONNECT!</span>
+        </h2>
+        <ul class="contact-list">
+          <li>Austin, Texas</li>
+          <li><a href="tel:1234567899">123-456-7899</a></li>
+          <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn.com/yourname</a></li>
+          <li><a href="mailto:hello@example.com"><strong>hello@example.com</strong></a></li>
+        </ul>
+      </div>
+      <div class="connect-visual reveal delay-1">
+        <canvas class="portrait-burst" data-burst aria-hidden="true"></canvas>
+        <div class="arch-frame arch-float">
+          <img class="portrait" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80" alt="Emily" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Emily Ballardo</p>
+  </footer>
+
+  <!-- Split JS like a template: particles → card bursts → scroll → main -->
+  <script src="js/particles.js"></script>
+  <script src="js/card-bursts.js"></script>
+  <script src="js/scroll-effects.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

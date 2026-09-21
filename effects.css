@@ -1,0 +1,239 @@
+/* =========================================================
+   EFFECTS — background motion, particles layer, scroll anims
+   ========================================================= */
+
+/* Moving gradient wash behind everything */
+.bg-move {
+  position: fixed;
+  inset: -30%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 28%, rgba(196, 163, 224, 0.75), transparent 42%),
+    radial-gradient(circle at 82% 18%, rgba(139, 95, 191, 0.45), transparent 40%),
+    radial-gradient(circle at 48% 78%, rgba(170, 120, 220, 0.5), transparent 46%),
+    var(--bg);
+  animation: bg-drift 8s ease-in-out infinite alternate;
+}
+
+@keyframes bg-drift {
+  from { transform: translate3d(-4%, -3%, 0) scale(1.08); }
+  to   { transform: translate3d(4%, 4%, 0) scale(1.18); }
+}
+
+/* Canvas particles sit above the gradient, under content */
+#particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Extra CSS star layer (backup motion if JS is slow to load) */
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.starfield span {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(160, 110, 220, 0.9);
+  box-shadow: 0 0 8px rgba(200, 160, 255, 0.9);
+  animation: star-drift linear infinite;
+}
+.starfield span:nth-child(odd) {
+  width: 2px;
+  height: 2px;
+  animation-name: star-drift-alt;
+}
+
+@keyframes star-drift {
+  from { transform: translate3d(0, 0, 0); opacity: 0.35; }
+  50%  { opacity: 1; }
+  to   { transform: translate3d(40px, -60px, 0); opacity: 0.35; }
+}
+@keyframes star-drift-alt {
+  from { transform: translate3d(0, 0, 0); opacity: 0.4; }
+  50%  { opacity: 1; }
+  to   { transform: translate3d(-50px, 40px, 0); opacity: 0.4; }
+}
+
+/* Top scroll progress line */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 100;
+}
+.scroll-progress span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent-soft), var(--accent));
+}
+
+/* Spiral/orbit PNGs — only used if needed elsewhere; keep soft */
+.burst-img {
+  display: none; /* replaced by canvas bursts — no more gray squares */
+}
+
+/* Floating chrome decorations */
+.float-chrome,
+.float-inline,
+.mini,
+[data-float] {
+  will-change: transform;
+}
+
+.float-chrome {
+  position: absolute;
+  z-index: 3;
+  width: 48px;
+  filter: drop-shadow(0 8px 16px rgba(70, 30, 110, 0.25));
+  animation: float-y 4s ease-in-out infinite;
+}
+.fc1 { left: 2%; bottom: 8%; width: 52px; }
+.fc2 { left: 46%; top: -2%; width: 34px; animation-delay: 0.5s; }
+.fc3 { right: 10%; top: 18%; width: 64px; animation-delay: 1s; }
+.float-chrome.on-media {
+  left: -8%;
+  bottom: -8%;
+  width: 60px;
+}
+
+.float-inline {
+  width: 64px;
+  margin-top: -1.5rem;
+  margin-left: auto;
+  animation: float-y 4.2s ease-in-out infinite;
+}
+
+.hero-chrome-wrap {
+  animation: float-y 4.5s ease-in-out infinite;
+}
+
+.mini {
+  position: absolute;
+  top: 16%;
+  left: 8%;
+  width: 24px;
+  z-index: 3;
+  animation: twinkle 2.6s ease-in-out infinite;
+}
+
+/* ---------- Sleek text motion (phone + desktop) ---------- */
+/* Headings slide up from behind a mask */
+.text-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+  margin-bottom: -0.06em;
+}
+.text-line > span {
+  display: block;
+  transform: translateY(115%);
+  transition: transform 0.9s var(--ease);
+  will-change: transform;
+}
+.reveal.is-in .text-line > span,
+.hero.is-shown .text-line > span {
+  transform: translateY(0);
+}
+
+/* Body copy fades and rises, slightly after the heading */
+.text-rise {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+}
+.reveal.is-in .text-rise,
+.hero.is-shown .text-rise {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero button still eases in on load */
+.anim-in {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: rise 0.9s var(--ease) forwards;
+}
+.delay-1 { animation-delay: 0.12s; }
+.delay-2 { animation-delay: 0.28s; }
+.delay-3 { animation-delay: 0.4s; }
+
+/* Cards, phones, and photos fade in as a group */
+.service-card.reveal,
+.phone.reveal,
+.bio-visual.reveal,
+.seo-block.reveal,
+.band-row.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+}
+.service-card.reveal.is-in,
+.phone.reveal.is-in,
+.bio-visual.reveal.is-in,
+.seo-block.reveal.is-in,
+.band-row.reveal.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Connect photo scales in after the text */
+.connect-visual.reveal {
+  opacity: 0;
+  transform: translateY(24px) scale(0.96);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+.connect-visual.reveal.is-in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Section nudge while scrolling (set by JS as --shift) */
+[data-parallax] {
+  transition: transform 0.1s linear;
+}
+
+@keyframes rise {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.45; transform: scale(0.85) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.15) rotate(12deg); }
+}
+
+@media (max-width: 900px) {
+  .fc1, .fc2, .fc3 { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-line > span,
+  .text-rise,
+  .reveal,
+  .connect-visual.reveal,
+  .anim-in {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
